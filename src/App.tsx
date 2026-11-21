@@ -81,6 +81,7 @@ function Gap() {
             <h3>{f.name}</h3>
             <Badge tone={f.kind.startsWith('Intentional') ? 'next' : 'then'}>{f.kind}</Badge>
             <p>{f.text}</p>
+            {f.source && <a className="inlineLink" href={f.source} target="_blank" rel="noreferrer">Source<ExtArrow /></a>}
           </div>
         ))}
       </div>
@@ -226,6 +227,7 @@ function Evidence() {
           <div className="finding" key={f.stat}>
             <b>{f.stat}</b>
             <p>{f.text}</p>
+            {f.source && <a className="inlineLink" href={f.source} target="_blank" rel="noreferrer">Source<ExtArrow /></a>}
           </div>
         ))}
       </div>
