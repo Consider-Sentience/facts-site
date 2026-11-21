@@ -35,12 +35,12 @@ section > h2 { margin-bottom: var(--spacing-12); }
 .chips { display: flex; flex-wrap: wrap; gap: var(--spacing-12); }
 .badge { display: inline-flex; align-items: center; gap: 6px; align-self: flex-start; border-radius: var(--radius-pill); padding: 4px 10px; font-size: 11px; line-height: 16px; font-weight: 600; text-transform: uppercase; flex: none; }
 .badge .bdot { width: 6px; height: 6px; border-radius: 50%; background: currentColor; opacity: .7; }
-.badge.done { background: #dfe4e3; color: var(--color-status-pass); }
-.badge.next { background: #e9e0da; color: var(--color-rust); }
-.badge.then { background: #e3e5e8; color: var(--color-slate); }
+.badge.done { background: var(--color-sage-tint); color: var(--color-status-pass); }
+.badge.next { background: var(--color-next-tint); color: var(--color-rust); }
+.badge.then { background: var(--color-then-tint); color: var(--color-slate); }
 
 /* Cards (BEARCLAW: white, 1px border, 8px radius). Equal height inside every grid. */
-.card { background: #fff; border: 1px solid rgba(74, 78, 85, 0.12); border-radius: var(--radius-md); padding: var(--spacing-24); display: flex; flex-direction: column; gap: var(--spacing-8); }
+.card { background: var(--color-white); border: 1px solid rgba(74, 78, 85, 0.12); border-radius: var(--radius-md); padding: var(--spacing-24); display: flex; flex-direction: column; gap: var(--spacing-8); }
 .card > p:not(.tag) { margin: 0; }
 .grid2 { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--spacing-16); align-items: stretch; }
 .stack { display: grid; gap: var(--spacing-16); }
@@ -54,10 +54,10 @@ section > h2 { margin-bottom: var(--spacing-12); }
 .toggle { display: inline-flex; max-width: 100%; overflow-x: auto; border: 1px solid rgba(27, 36, 48, 0.55); border-radius: var(--radius-pill); padding: 6px; margin-bottom: var(--spacing-16); }
 .toggle button { flex: none; font: inherit; font-size: 12px; line-height: 16px; font-weight: 500; text-transform: uppercase; white-space: nowrap; padding: 8px 12px; border: 0; border-radius: var(--radius-pill); background: transparent; color: var(--color-ink); cursor: pointer; transition: background .15s, color .15s; }
 .toggle button:hover:not(.on) { background: rgba(27, 36, 48, 0.06); }
-.toggle button.on { background: var(--color-ink); color: #fff; }
+.toggle button.on { background: var(--color-ink); color: var(--color-white); }
 
 /* Profile: follows the layout of the original paper's Figure 4 (tinted header, labelled sections) */
-.profile { background: #fff; border: 1px solid rgba(74, 78, 85, 0.12); border-radius: var(--radius-md); overflow: hidden; animation: fadeIn .2s ease; }
+.profile { background: var(--color-white); border: 1px solid rgba(74, 78, 85, 0.12); border-radius: var(--radius-md); overflow: hidden; animation: fadeIn .2s ease; }
 .pHead { padding: var(--spacing-24) var(--spacing-32); border-bottom: 1px solid rgba(74, 78, 85, 0.12); }
 .pHead.a { background: var(--color-sage-tint); }
 .pHead.b { background: var(--color-tide-tint); }
@@ -78,15 +78,15 @@ section > h2 { margin-bottom: var(--spacing-12); }
 
 /* Welfare impact map: one column per stage, added as the toggle moves forward (as in the paper's table) */
 .mapScroll { overflow-x: auto; }
-.impact { --label: 140px; display: grid; grid-template-columns: var(--label) repeat(var(--cols), minmax(0, 1fr)); width: calc(var(--label) + var(--cols) * ((100% - var(--label)) / 5)); min-width: calc(var(--label) + var(--cols) * 150px); border: 1px solid rgba(74, 78, 85, 0.18); border-radius: var(--radius-md); overflow: hidden; background: #fff; }
+.impact { --label: 140px; display: grid; grid-template-columns: var(--label) repeat(var(--cols), minmax(0, 1fr)); width: calc(var(--label) + var(--cols) * ((100% - var(--label)) / 5)); min-width: calc(var(--label) + var(--cols) * 150px); border: 1px solid rgba(74, 78, 85, 0.18); border-radius: var(--radius-md); overflow: hidden; background: var(--color-white); }
 .irow { display: contents; }
 .ic { padding: var(--spacing-12); border-right: 1px solid rgba(74, 78, 85, 0.12); border-bottom: 1px solid rgba(74, 78, 85, 0.12); font-size: 13px; line-height: 20px; }
-.ic.head { font-size: 11px; line-height: 16px; font-weight: 600; text-transform: uppercase; color: var(--color-slate); background: #fff; animation: fadeIn .25s ease; display: flex; align-items: center; }
-.ic.corner { background: #fff; }
+.ic.head { font-size: 11px; line-height: 16px; font-weight: 600; text-transform: uppercase; color: var(--color-slate); background: var(--color-white); animation: fadeIn .25s ease; display: flex; align-items: center; }
+.ic.corner { background: var(--color-white); }
 .ic.rowhead { font-size: 11px; line-height: 16px; font-weight: 600; text-transform: uppercase; color: var(--color-slate); }
 .ic.body { animation: fadeIn .25s ease; }
 .ic.body b { display: block; font-weight: 600; margin-bottom: 2px; }
-.ic.plain { background: #fff; }
+.ic.plain { background: var(--color-white); }
 .ic.human { background: var(--color-sage-tint); }
 .ic.animal { background: var(--color-clay-tint); }
 .ic.indicator { background: var(--color-tide-tint); }
@@ -108,7 +108,7 @@ section > h2 { margin-bottom: var(--spacing-12); }
 #evidence .tag { margin-bottom: var(--spacing-12); }
 .bars { display: grid; gap: var(--spacing-12); }
 .bar { display: grid; grid-template-columns: 140px 1fr 56px; align-items: center; gap: var(--spacing-16); font-weight: 500; }
-.track { height: 20px; background: #dee3e8; border-radius: 4px; overflow: hidden; }
+.track { height: 20px; background: var(--color-then-tint); border-radius: 4px; overflow: hidden; }
 .fill { height: 100%; border-radius: 4px; }
 .fill.pass { background: var(--color-status-pass); }
 .fill.mid { background: var(--color-rust); }
@@ -127,7 +127,7 @@ section > h2 { margin-bottom: var(--spacing-12); }
 
 /* CTA (BEARCLAW DataCodeCTA: text on top, links below) */
 .cta { margin-top: var(--spacing-16); display: flex; flex-direction: column; align-items: center; gap: var(--spacing-16); background: var(--color-ink); border-radius: var(--radius-md); padding: var(--spacing-32); text-align: center; }
-.ctaText { color: #fff; font-size: 16px; font-weight: 500; }
+.ctaText { color: var(--color-white); font-size: 16px; font-weight: 500; }
 .ctaLinks { display: flex; flex-wrap: wrap; justify-content: center; gap: var(--spacing-8) var(--spacing-32); }
 .cta a { color: var(--color-rust); font-size: 15px; font-weight: 500; text-decoration: none; transition: color .15s; }
 .cta a:hover { color: var(--color-rust-deep); }

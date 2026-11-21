@@ -263,12 +263,12 @@ export default function App() {
             className="fromCS"
             style={{ display: 'flex', gap: 6, alignItems: 'center', marginTop: 16 }}
           >
-            <span style={{ fontFamily: "'Nunito', sans-serif", color: '#c97c2e', fontSize: 20, letterSpacing: '-0.4px', lineHeight: 1.2 }}>[</span>
-            <span style={{ fontFamily: "'Source Serif 4', serif", fontStyle: 'italic', fontWeight: 500, color: '#4a4e55', fontSize: 14, letterSpacing: '-0.28px', lineHeight: 1.2 }}>
+            <span style={{ fontFamily: "'Nunito', sans-serif", color: 'var(--color-rust)', fontSize: 20, letterSpacing: '-0.4px', lineHeight: 1.2 }}>[</span>
+            <span style={{ fontFamily: "'Source Serif 4', serif", fontStyle: 'italic', fontWeight: 500, color: 'var(--color-slate)', fontSize: 14, letterSpacing: '-0.28px', lineHeight: 1.2 }}>
               a project from
             </span>
             <img src="/consider-sentience-wordmark.png" alt="Consider Sentience" style={{ height: 20, width: 'auto' }} />
-            <span style={{ fontFamily: "'Nunito', sans-serif", color: '#c97c2e', fontSize: 20, letterSpacing: '-0.4px', lineHeight: 1.2 }}>]</span>
+            <span style={{ fontFamily: "'Nunito', sans-serif", color: 'var(--color-rust)', fontSize: 20, letterSpacing: '-0.4px', lineHeight: 1.2 }}>]</span>
           </a>
           <p className="lede">A framework for including non-human animals in how AI systems are designed, and a pilot test of how today's models handle it. It's for people who build, review, or fund AI systems.</p>
         </header>
