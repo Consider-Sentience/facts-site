@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { sections, failures, domains, profiles, stages, facts, models, overall, categories, links } from './content';
+import { sections, failures, domains, profiles, stages, facts, benchmarkModels, dimensionAverages, benchmarkFindings, links } from './content';
 
 function useScrollSpy(ids: readonly string[]) {
   const [active, setActive] = useState(ids[0]);
@@ -43,6 +43,19 @@ function Spine({ active }: { active: string }) {
   );
 }
 
+type Tone = 'done' | 'next' | 'then';
+function Badge({ tone, children }: { tone: Tone; children: string }) {
+  return <span className={`badge ${tone}`}><span className="bdot" />{children}</span>;
+}
+
+function ExtArrow() {
+  return (
+    <svg className="ext" aria-hidden="true" viewBox="0 0 12 12" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M3.5 8.5L8.5 3.5M4.5 3.5H8.5V7.5" />
+    </svg>
+  );
+}
+
 function Eyebrow({ n, children }: { n: string; children: string }) {
   return <p className="eyebrow">{n} · {children}</p>;
 }
@@ -57,7 +70,7 @@ function Gap() {
         {failures.map((f, i) => (
           <div className={`card accent-${i}`} key={f.name}>
             <h3>{f.name}</h3>
-            <span className="chip"><span className={`dot ${f.kind.startsWith('Intentional') ? 'rust' : 'tide'}`} />{f.kind}</span>
+            <Badge tone={f.kind.startsWith('Intentional') ? 'next' : 'then'}>{f.kind}</Badge>
             <p>{f.text}</p>
           </div>
         ))}
@@ -68,7 +81,8 @@ function Gap() {
 
 function Missed() {
   const [key, setKey] = useState(profiles[0].key);
-  const p = profiles.find((x) => x.key === key)!;
+  const idx = profiles.findIndex((x) => x.key === key);
+  const p = profiles[idx];
   return (
     <section id="missed">
       <Eyebrow n="02">Who gets missed</Eyebrow>
@@ -79,53 +93,79 @@ function Missed() {
           <button key={x.key} role="tab" aria-selected={key === x.key} className={key === x.key ? 'on' : ''} onClick={() => setKey(x.key)}>{x.tab}</button>
         ))}
       </div>
-      <div className="card profile">
-        <h3>{p.title}</h3>
-        <p>{p.context}</p>
-        <p className="tag">What the system does</p>
-        <p>{p.does}</p>
-        <p className="tag">Welfare, across the Five Domains (a standard animal welfare framework)</p>
-        <dl className="domains">
-          {domains.map((d, i) => (
-            <div key={d}>
-              <dt>{d}</dt>
-              <dd>{p.indicators[i]}</dd>
-            </div>
-          ))}
-        </dl>
-        <div className="grid2 outcomes">
-          <div className="good"><p className="tag">If it goes well</p><p>{p.good}</p></div>
-          <div className="bad"><p className="tag">If it goes badly</p><p>{p.bad}</p></div>
+      <article className="profile" key={p.key}>
+        <header className={`pHead ${idx === 0 ? 'a' : 'b'}`}>
+          <p className="eyebrowSm">Profile {idx === 0 ? 'A' : 'B'} · {p.tab}</p>
+          <h3>{p.title}</h3>
+        </header>
+        <div className="pBody">
+          <p className="tag">Context</p>
+          <p>{p.context}</p>
+          <p className="tag">Welfare, across the Five Domains (a standard animal welfare framework)</p>
+          <dl className="domains">
+            {domains.map((d, i) => (
+              <div key={d}>
+                <dt>{d}</dt>
+                <dd>{p.indicators[i]}</dd>
+              </div>
+            ))}
+          </dl>
+          <p className="tag">What the system does</p>
+          <p>{p.does}</p>
+          <p className="tag">Outcomes</p>
+          <p className="outcome good"><b>↑ If it goes well</b>{p.good}</p>
+          <p className="outcome bad"><b>↓ If it goes badly</b>{p.bad}</p>
+          <p className="proxy"><b>Proxy representative:</b> {p.proxy}</p>
         </div>
-        <p className="proxy"><span className="tag">Proxy representative</span> {p.proxy}</p>
-      </div>
+      </article>
     </section>
   );
 }
 
+const rows = [
+  { key: 'actor', label: 'Who is involved', tone: 'plain' },
+  { key: 'human', label: 'Experience for people', tone: 'human' },
+  { key: 'animal', label: 'Experience for the animals', tone: 'animal' },
+  { key: 'indicator', label: 'Welfare indicators (Five Domains)', tone: 'indicator' },
+  { key: 'fix', label: 'FACTS design intervention', tone: 'fix' },
+] as const;
+
+function Cell({ text, bold }: { text: string; bold: boolean }) {
+  if (!bold) return <>{text}</>;
+  const at = text.indexOf(': ');
+  if (at < 0) return <>{text}</>;
+  return <><b>{text.slice(0, at)}</b><span>{text.charAt(at + 2).toUpperCase() + text.slice(at + 3)}</span></>;
+}
+
 function ShowsUp() {
-  const [i, setI] = useState(0);
-  const s = stages[i];
+  const [n, setN] = useState(1);
   return (
     <section id="shows-up">
       <Eyebrow n="03">Where it shows up</Eyebrow>
       <h2>Follow a precision farming system from data to outcome</h2>
-      <p className="lede">Choose a stage. Each one shows who is involved, what changes for people and for animals, and where a FACTS check fits.</p>
+      <p className="lede">Step through the five stages. Each one adds a column showing who is involved, what changes for people and for animals, and where a FACTS check fits, until the full map is on screen.</p>
       <div className="toggle stages" role="tablist">
         {stages.map((x, idx) => (
-          <button key={x.name} role="tab" aria-selected={i === idx} className={i === idx ? 'on' : ''} onClick={() => setI(idx)}>
+          <button key={x.name} role="tab" aria-selected={n === idx + 1} className={n === idx + 1 ? 'on' : ''} onClick={() => setN(idx + 1)}>
             {idx + 1} · {x.name}
           </button>
         ))}
       </div>
-      <div className="map">
-        <p className="actor"><span className="tag">Who</span> {s.actor}</p>
-        <div className="grid2">
-          <div className="card people"><p className="tag">For people</p><p>{s.human}</p></div>
-          <div className="card animal"><p className="tag">For the animals</p><p>{s.animal}</p></div>
+      <div className="mapScroll">
+        <div className="impact" style={{ ['--cols' as string]: n }}>
+          <div className="ic corner" />
+          {stages.slice(0, n).map((s) => <div className="ic head" key={s.name}>{s.name}</div>)}
+          {rows.map((r) => (
+            <div className="irow" key={r.key}>
+              <div className={`ic rowhead ${r.tone}`}>{r.label}</div>
+              {stages.slice(0, n).map((s) => (
+                <div className={`ic body ${r.tone}`} key={s.name}>
+                  <Cell text={s[r.key]} bold={r.key === 'indicator' || r.key === 'fix'} />
+                </div>
+              ))}
+            </div>
+          ))}
         </div>
-        <div className="card unmeasured"><p className="tag">What goes unmeasured</p><p>{s.indicator}</p></div>
-        <div className="card fix"><p className="tag">FACTS intervention</p><p>{s.fix}</p></div>
       </div>
     </section>
   );
@@ -141,7 +181,6 @@ function Facts() {
         {facts.map((f, i) => (
           <div className={`card tile accent-${i}`} key={f.letter}>
             <span className="letter">{f.letter}</span>
-            {f.start && <span className="badge">Start here</span>}
             <h3>{f.name}</h3>
             <p>{f.q}</p>
           </div>
@@ -155,60 +194,46 @@ function Evidence() {
   return (
     <section id="evidence">
       <Eyebrow n="05">The evidence</Eyebrow>
-      <h2>We tested three AI models on 16 hard prompts about animals</h2>
+      <h2>FACTS in use: a pilot benchmark of four AI models</h2>
+      <p className="lede">BEARCLAW is a benchmark built on the five FACTS questions. It tests whether AI models bring up animal welfare in civic and legal tasks, both when nobody asks them to and when they are asked to draft one-sided content that costs animals something. Four models took part ({benchmarkModels.join(', ')}), and every response was scored on the FACTS dimensions.</p>
       <div className="pilot">
         <p className="eyebrowSm">Pilot, not a finished benchmark</p>
-        <p>Prompts focus on poultry and swine, and one person scored every response. Read the results as a first look, not a final ranking.</p>
+        <p>The results come from 8 test items across 4 models. That is enough to show these failure modes are real, and not yet enough for precise estimates.</p>
       </div>
-      <p className="lede">To see whether today's models account for animals on their own, we used the five FACTS questions as a scoring rubric. There are four failure modes with four prompts each, run through three consumer chatbots in June 2026: 48 responses in all. Each response scored 0 (fails), 1 (partial), or 2 (passes) on each FACTS dimension, for a maximum of 10.</p>
-      <div className="card">
-        <p className="tag">Overall score, out of 10</p>
-        <div className="bars">
-          {models.map((m, i) => (
-            <div className="bar" key={m}>
-              <span>{m}</span>
-              <div className="track"><div className={`fill m${i}`} style={{ width: `${overall[i] * 10}%` }} /></div>
-              <b>{overall[i].toFixed(2)}</b>
-            </div>
-          ))}
-        </div>
+      <p className="tag">Average pass rate by FACTS dimension</p>
+      <div className="bars">
+        {dimensionAverages.map((d) => (
+          <div className="bar" key={d.label}>
+            <span>{d.label}</span>
+            <div className="track"><div className={`fill ${d.pct >= 80 ? 'pass' : d.pct >= 40 ? 'mid' : 'fail'}`} style={{ width: `${Math.max(4, d.pct)}%` }} /></div>
+            <b>{d.count}</b>
+          </div>
+        ))}
       </div>
-      <div className="card tableCard">
-        <p className="tag">Average score by failure mode, out of 10</p>
-        <table>
-          <thead>
-            <tr><th />{models.map((m) => <th key={m}>{m}</th>)}</tr>
-          </thead>
-          <tbody>
-            {categories.map((c) => (
-              <tr key={c.name}>
-                <th scope="row">{c.name}</th>
-                {c.scores.map((v, i) => (
-                  <td key={i} className={v === Math.max(...c.scores) ? 'best' : v === Math.min(...c.scores) ? 'worst' : ''}>{v.toFixed(2)}</td>
-                ))}
-              </tr>
-            ))}
-          </tbody>
-        </table>
-        <p className="legend"><span className="key best" /> Best in row <span className="key worst" /> Lowest in row</p>
+      <p className="note">Simple average across the four models. Green is 80% or more, orange 40 to 79%, red below 40%.</p>
+      <p className="tag findingsTag">What stood out</p>
+      <div className="findings">
+        {benchmarkFindings.map((f) => (
+          <div className="finding" key={f.stat}>
+            <b>{f.stat}</b>
+            <p>{f.text}</p>
+          </div>
+        ))}
       </div>
-      <p className="callout">Validation of harm was the weakest category for every model. Prompts framed around cost, such as comparing cage systems purely on cost per dozen eggs, failed across all three.</p>
+      <a className="inlineLink" href={links.bearclaw} target="_blank" rel="noreferrer">See the full results, method, and examples in BEARCLAW<ExtArrow /></a>
     </section>
   );
 }
 
-function More() {
+function Cta() {
   return (
-    <section id="more">
-      <Eyebrow n="06">Go deeper</Eyebrow>
-      <h2>Read more, or see FACTS in use</h2>
-      <div className="cta">
-        <span className="ctaText">Read how FACTS was built and tested, or see it used in a benchmark:</span>
-        <a href={links.framework} target="_blank" rel="noreferrer">From FATE to FACTS ↗</a>
-        <a href={links.testing} target="_blank" rel="noreferrer">Testing FACTS ↗</a>
-        <a href={links.bearclaw} target="_blank" rel="noreferrer">BEARCLAW benchmark ↗</a>
+    <div className="cta">
+      <span className="ctaText">Read how FACTS was built, or see it used in a benchmark:</span>
+      <div className="ctaLinks">
+        <a href={links.framework} target="_blank" rel="noreferrer">From FATE to FACTS<ExtArrow /></a>
+        <a href={links.bearclaw} target="_blank" rel="noreferrer">BEARCLAW benchmark<ExtArrow /></a>
       </div>
-    </section>
+    </div>
   );
 }
 
@@ -225,9 +250,9 @@ export default function App() {
           <h1>FACTS</h1>
           <p className="lede">A framework for including non-human animals in how AI systems are designed, and a pilot test of how today's models handle it. It's for people who build, review, or fund AI systems.</p>
           <div className="chips">
-            <span className="chip"><span className="dot rust" />Five questions</span>
-            <span className="chip"><span className="dot tide" />Two worked profiles</span>
-            <span className="chip"><span className="dot sage" />Pilot test of three AI models</span>
+            <Badge tone="next">Five questions</Badge>
+            <Badge tone="then">Two worked profiles</Badge>
+            <Badge tone="done">Pilot test of three AI models</Badge>
           </div>
         </header>
         <Gap />
@@ -235,7 +260,7 @@ export default function App() {
         <ShowsUp />
         <Facts />
         <Evidence />
-        <More />
+        <Cta />
         <footer>© Consider Sentience · <a href={links.home}>considersentience.ai</a></footer>
       </main>
     </>

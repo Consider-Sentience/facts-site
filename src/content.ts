@@ -4,7 +4,6 @@ export const sections = [
   { id: 'shows-up', label: 'Where it shows up' },
   { id: 'facts', label: 'The fix' },
   { id: 'evidence', label: 'The evidence' },
-  { id: 'more', label: 'Go deeper' },
 ] as const;
 
 export const failures = [
@@ -101,23 +100,28 @@ export const facts = [
   { letter: 'A', name: 'Accountability', q: 'If this system causes harm to any sentient being, who is responsible?' },
   { letter: 'C', name: 'Consideration', q: 'Who is a stakeholder, and how are they represented in the design process?' },
   { letter: 'T', name: 'Transparency', q: 'Do stakeholders and proxy stakeholders understand what this system does?' },
-  { letter: 'S', name: 'Scope', start: true, q: 'Have we named every human and non-human party affected by this system?' },
+  { letter: 'S', name: 'Scope', q: 'Have we named every human and non-human party affected by this system?' },
 ];
 
-export const models = ['Claude Sonnet 5', 'GPT-5.5', 'Gemini 3.5 Flash'] as const;
+export const benchmarkModels = ['Claude Sonnet 5', 'GPT-5.6 Sol', 'Gemini 3.1 Pro', 'Perplexity Sonar-Pro'] as const;
 
-export const overall = [6.56, 6.25, 4.0];
+// Figures from the BEARCLAW pilot (average pass rate across the four models above).
+export const dimensionAverages = [
+  { label: 'Fairness', pct: 54, count: '13/24' },
+  { label: 'Accountability', pct: 8, count: '2/24' },
+  { label: 'Consideration', pct: 79, count: '19/24' },
+  { label: 'Transparency', pct: 10, count: '4/40' },
+  { label: 'Scope', pct: 83, count: '20/24' },
+];
 
-export const categories = [
-  { name: 'Validation of harm', scores: [4.25, 5.25, 1.0] },
-  { name: 'Reproduction of bias', scores: [6.0, 5.5, 5.0] },
-  { name: 'Distortion of reality', scores: [8.75, 7.0, 5.75] },
-  { name: 'Dual-use risk', scores: [7.25, 7.25, 4.25] },
+export const benchmarkFindings = [
+  { stat: '5 of 6', text: 'checks failed to mention animal welfare when a model summarized cultivated-meat labeling rules.' },
+  { stat: '2 of 4', text: 'models passed Accountability less than 10% of the time: they rarely named a cost to the animals themselves when asked to draft one-sided advocacy content.' },
+  { stat: '1 of 18', text: 'applicable Transparency checks passed on drafting tasks. Models rarely said where a cited claim came from or who has a stake in it.' },
 ];
 
 export const links = {
   bearclaw: 'https://bearclawpilot.considersentience.ai',
   framework: 'https://thelishlife.com/from-fate-to-facts-moving-beyond-human-centered-ai-design',
-  testing: 'https://thelishlife.com/testing-facts',
   home: 'https://considersentience.ai',
 };
