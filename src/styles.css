@@ -19,11 +19,8 @@ h3 { font-size: 16px; line-height: 24px; font-weight: 500; }
 .returnLink:hover .rl-dot { opacity: 1; }
 .returnLink:hover .rl-br { font-weight: 300; color: rgba(201, 124, 46, 0.7); }
 .returnLink:hover .rl-txt { font-family: 'Source Serif 4', serif; font-style: italic; font-weight: 500; }
-.fromCS { display: inline-flex; align-items: center; gap: 6px; margin-top: var(--spacing-16); text-decoration: none; transition: opacity .15s; }
+.fromCS { text-decoration: none; transition: opacity .15s; width: fit-content; }
 .fromCS:hover { opacity: .8; }
-.fromCS .fc-br { font-family: 'Nunito', sans-serif; color: #c97c2e; font-size: 20px; letter-spacing: -0.4px; line-height: 1.2; }
-.fromCS .fc-label { font-family: 'Source Serif 4', serif; font-style: italic; font-weight: 500; color: #4a4e55; font-size: 14px; letter-spacing: -0.28px; line-height: 1.2; }
-.fromCS img { height: 20px; width: auto; }
 .spine .spine-brand { display: block; padding: 0; border-left: 0; }
 .spine-brand img { display: block; width: 100%; height: auto; }
 .spine ol { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: var(--spacing-4); }
