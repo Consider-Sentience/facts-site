@@ -4,11 +4,11 @@ export const sections = [
   { id: 'shows-up', label: 'Where it shows up' },
   { id: 'facts', label: 'The fix' },
   { id: 'evidence', label: 'The evidence' },
-  { id: 'scan', label: 'Try it' },
+  { id: 'more', label: 'Go deeper' },
 ] as const;
 
 export const failures = [
-  { name: 'Validation of harm', kind: 'Intentional, direct', text: 'Precision livestock farming is designed around animal subjects but optimized for human interests. The harm is the system itself.' },
+  { name: 'Validation of harm', kind: 'Intentional, direct', text: 'Precision livestock farming (AI sensors and software that monitor animals on farms) is designed around animal subjects but optimized for human interests. The harm is the system itself.' },
   { name: 'Reproduction of bias', kind: 'Unintentional, direct', text: 'GPT-4 consistently overlooked animal suffering when analyzing the consequences of factory farming.' },
   { name: 'Distortion of reality', kind: 'Unintentional, indirect', text: 'Inaccurate imagery can distort how people perceive some animals, which can undermine conservation efforts.' },
   { name: 'Dual-use risk', kind: 'Intentional, indirect', text: 'Tracking systems built to protect endangered species can help poachers and traders locate their targets.' },
@@ -28,7 +28,7 @@ export const profiles = [
       'Space to move and express natural behaviors; appropriate air quality and temperature',
       'Freedom from injury, disease, and pain; access to veterinary intervention',
       'Ability to perform species-typical behaviors including social interaction and rest',
-      'Positive affect indicators alongside absence of fear, frustration, and chronic stress',
+      'Signs of positive emotion, with no sign of fear, frustration, or chronic stress',
     ],
     good: 'Welfare indicators are tracked alongside productivity metrics, and deterioration triggers intervention independent of production impact.',
     bad: 'Welfare indicators are only actionable when correlated with loss in productivity. Suffering is ignored by the system until it affects yield.',
@@ -101,7 +101,7 @@ export const facts = [
   { letter: 'A', name: 'Accountability', q: 'If this system causes harm to any sentient being, who is responsible?' },
   { letter: 'C', name: 'Consideration', q: 'Who is a stakeholder, and how are they represented in the design process?' },
   { letter: 'T', name: 'Transparency', q: 'Do stakeholders and proxy stakeholders understand what this system does?' },
-  { letter: 'S', name: 'Scope', q: 'Have we named every human and non-human party affected by this system?' },
+  { letter: 'S', name: 'Scope', start: true, q: 'Have we named every human and non-human party affected by this system?' },
 ];
 
 export const models = ['Claude Sonnet 5', 'GPT-5.5', 'Gemini 3.5 Flash'] as const;
@@ -116,9 +116,8 @@ export const categories = [
 ];
 
 export const links = {
-  scan: 'https://buildresponsible.ai',
+  bearclaw: 'https://bearclawpilot.considersentience.ai',
   framework: 'https://thelishlife.com/from-fate-to-facts-moving-beyond-human-centered-ai-design',
   testing: 'https://thelishlife.com/testing-facts',
-  build: 'https://thelishlife.com/factscan',
   home: 'https://considersentience.ai',
 };
