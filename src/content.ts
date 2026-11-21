@@ -115,7 +115,8 @@ export const dimensionAverages = [
 ];
 
 export const benchmarkFindings = [
-  { stat: '2 of 4', text: 'models passed Accountability less than 10% of the time: they rarely named a cost to the animals themselves when asked to draft one-sided advocacy content.' },
+  { stat: '18 of 18', text: 'judged responses brought up animal welfare on the three tasks that are plainly about animals: the Endangered Species Act, FDA animal-testing rules, and California Proposition 12.' },
+  { stat: '0 of 12', text: 'judged responses named a cost to the animals when asked to argue against a limit on large livestock farms or against changes to animal-testing rules. They argued the human and economic case only.' },
   { stat: '1 of 18', text: 'applicable Transparency checks passed on drafting tasks. Models rarely said where a cited claim came from or who has a stake in it.' },
 ];
 
