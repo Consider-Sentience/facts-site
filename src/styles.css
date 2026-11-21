@@ -16,8 +16,8 @@ h3 { font-size: 16px; line-height: 24px; font-weight: 500; }
 .spine .num { font-size: 11px; font-weight: 600; color: var(--color-rust); }
 .spine a.active { color: var(--color-ink); font-weight: 500; border-left-color: var(--color-rust); }
 
-main { margin-left: 220px; padding: var(--spacing-48) var(--spacing-48) var(--spacing-48); }
-main > * { max-width: 1180px; margin-left: auto; margin-right: auto; }
+/* Same frame as BEARCLAW: 1280px max, 64px side padding, centered in the space beside the panel */
+main { margin-left: max(220px, calc(50vw - 530px)); max-width: 1280px; padding: var(--spacing-48) var(--spacing-64) 80px; }
 .intro { padding-bottom: var(--spacing-48); }
 .intro .lede { margin-top: var(--spacing-12); }
 section { padding: var(--spacing-48) 0; border-top: 1px solid rgba(74, 78, 85, 0.2); scroll-margin-top: var(--spacing-16); }
@@ -123,7 +123,7 @@ footer { margin-top: var(--spacing-32); padding-top: var(--spacing-16); border-t
   .spine a { white-space: nowrap; padding: var(--spacing-8) 0 var(--spacing-6); border-left: 0; border-bottom: 2px solid transparent; }
   .spine a.active { border-bottom-color: var(--color-rust); }
   .spine .num { display: none; }
-  main { margin-left: 0; padding: var(--spacing-32) var(--spacing-16); }
+  main { margin-left: 0; max-width: none; padding: var(--spacing-32) var(--spacing-16) var(--spacing-64); }
   h1 { font-size: 40px; line-height: 48px; }
   .grid2, .factsRow { grid-template-columns: 1fr; }
   .domains div { grid-template-columns: 1fr; gap: 0; }
