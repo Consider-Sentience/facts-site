@@ -227,7 +227,6 @@ function Evidence() {
           <div className="finding" key={f.stat}>
             <b>{f.stat}</b>
             <p>{f.text}</p>
-            {f.source && <a className="inlineLink" href={f.source} target="_blank" rel="noreferrer">Source<ExtArrow /></a>}
           </div>
         ))}
       </div>
