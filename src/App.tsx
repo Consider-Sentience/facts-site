@@ -27,7 +27,7 @@ function useScrollSpy(ids: readonly string[]) {
 function Spine({ active }: { active: string }) {
   return (
     <nav className="spine" aria-label="Sections">
-      <a className="spine-brand" href={links.home}>Consider Sentience</a>
+      <a className="spine-brand" href={links.home} aria-label="Consider Sentience"><img src="/consider-sentience-logo.png" alt="Consider Sentience" /></a>
       <ol>
         {sections.map((s, i) => (
           <li key={s.id}>
@@ -246,7 +246,6 @@ export default function App() {
       <Spine active={active} />
       <main>
         <header className="intro">
-          <p className="eyebrow">Consider Sentience</p>
           <h1>FACTS</h1>
           <p className="lede">A framework for including non-human animals in how AI systems are designed, and a pilot test of how today's models handle it. It's for people who build, review, or fund AI systems.</p>
         </header>
