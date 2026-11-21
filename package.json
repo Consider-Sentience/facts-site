@@ -3,7 +3,11 @@
   "private": true,
   "version": "0.1.0",
   "type": "module",
-  "scripts": { "dev": "vite", "build": "tsc && vite build", "preview": "vite preview" },
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "preview": "vite preview"
+  },
   "dependencies": {
     "cs-design-system": "github:lish-stack/cs-design-system",
     "react": "^18.3.1",

@@ -10,24 +10,15 @@ h3 { font-size: 16px; line-height: 24px; font-weight: 500; }
 /* Side panel navigation (BEARCLAW nav pattern, turned vertical) */
 .spine { position: fixed; left: 0; top: 0; bottom: 0; width: 232px; padding: var(--spacing-32) var(--spacing-16); background: var(--color-cloud); border-right: 1px solid rgba(74, 78, 85, 0.1); display: flex; flex-direction: column; gap: var(--spacing-32); z-index: 5; }
 .spine-head { display: flex; flex-direction: column; gap: var(--spacing-8); }
-.spine .returnLink { position: relative; display: inline-flex; align-self: flex-start; align-items: center; gap: 5px; margin-left: 12px; padding: 0; border-left: 0; line-height: 21px; color: var(--color-slate); transition: none; }
-.returnLink .rl-br { font-family: 'Nunito', sans-serif; font-weight: 200; font-size: 20px; line-height: 1; }
-.returnLink .rl-txt { font-size: 14px; }
-.returnLink .rl-dot { position: absolute; border-radius: 50%; background: rgba(201, 124, 46, 0.7); top: 50%; transform: translateY(-50%); opacity: 0; }
-.returnLink .rl-dot-l { width: 4px; height: 4px; left: -10px; }
-.returnLink .rl-dot-r { width: 6px; height: 6px; right: -11px; }
-.returnLink:hover .rl-dot { opacity: 1; }
-.returnLink:hover .rl-br { font-weight: 300; }
-.returnLink:hover .rl-txt { font-family: 'Source Serif 4', serif; font-style: italic; font-weight: 500; }
 .fromCS { text-decoration: none; transition: opacity .15s; width: fit-content; }
 .fromCS:hover { opacity: .8; }
 .spine .spine-brand { display: block; padding: 0; border-left: 0; }
-.spine-brand img { display: block; width: 199px; height: 32px; object-fit: cover; }
+.spine-brand img { display: block; height: 32px; width: auto; }
 .spine ol { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: var(--spacing-4); }
-.spine a { display: flex; align-items: center; gap: var(--spacing-10); padding: var(--spacing-6) 0 var(--spacing-6) var(--spacing-12); border-left: 2px solid transparent; font-size: 14px; line-height: 20px; color: var(--color-slate); text-decoration: none; transition: color .15s; }
-.spine a:hover { color: var(--color-ink); }
+.spine ol a { display: flex; align-items: center; gap: var(--spacing-10); padding: var(--spacing-6) 0 var(--spacing-6) var(--spacing-12); border-left: 2px solid transparent; font-size: 14px; line-height: 20px; color: var(--color-slate); text-decoration: none; transition: color .15s; }
+.spine ol a:hover { color: var(--color-ink); }
 .spine .num { font-size: 11px; font-weight: 600; color: var(--color-rust); }
-.spine a.active { color: var(--color-ink); font-weight: 500; border-left-color: var(--color-rust); }
+.spine ol a.active { color: var(--color-ink); font-weight: 500; border-left-color: var(--color-rust); }
 
 /* Side space matches BEARCLAW: its content frame is 1152px wide and centered, so each side gets (100vw - 1152px) / 2, never less than 64px. FACTS keeps that same space on the right, and the same space again to the right of the 220px side panel. */
 :root { --m: max(64px, calc((100vw - 1152px) / 2)); }
@@ -146,11 +137,11 @@ footer { margin-top: var(--spacing-32); padding-top: var(--spacing-16); border-t
 @media (max-width: 860px) {
   .spine { position: sticky; width: auto; flex-direction: row; align-items: center; padding: var(--spacing-8) var(--spacing-16); overflow-x: auto; gap: var(--spacing-16); border-right: 0; border-bottom: 1px solid rgba(74, 78, 85, 0.1); }
   .spine .spine-brand { display: none; }
-  .spine .returnLink { margin-left: 0; white-space: nowrap; }
+  .spine .cs-nav-link { white-space: nowrap; }
   .spine-head { flex-shrink: 0; }
   .spine ol { flex-direction: row; gap: var(--spacing-16); }
-  .spine a { white-space: nowrap; padding: var(--spacing-8) 0 var(--spacing-6); border-left: 0; border-bottom: 2px solid transparent; }
-  .spine a.active { border-bottom-color: var(--color-rust); }
+  .spine ol a { white-space: nowrap; padding: var(--spacing-8) 0 var(--spacing-6); border-left: 0; border-bottom: 2px solid transparent; }
+  .spine ol a.active { border-bottom-color: var(--color-rust); }
   .spine .num { display: none; }
   main { margin: 0; padding: var(--spacing-32) var(--spacing-16) var(--spacing-64); }
   h1 { font-size: 40px; line-height: 48px; }

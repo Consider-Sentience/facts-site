@@ -28,13 +28,13 @@ function Spine({ active }: { active: string }) {
   return (
     <nav className="spine" aria-label="Sections">
       <div className="spine-head">
-      <a className="spine-brand" href={links.home} aria-label="Consider Sentience"><img src="/consider-sentience-logo.png" alt="Consider Sentience" /></a>
-      <a className="returnLink" href={links.home}>
-        <span className="rl-dot rl-dot-l" aria-hidden="true" />
-        <span className="rl-br">[</span>
-        <span className="rl-txt">return to site</span>
-        <span className="rl-br">]</span>
-        <span className="rl-dot rl-dot-r" aria-hidden="true" />
+      <a className="spine-brand" href={links.home} aria-label="Consider Sentience"><img src="/consider-sentience-wordmark.png" alt="Consider Sentience" /></a>
+      <a className="cs-nav-link" href={links.home}>
+        <span className="cs-nav-link__dot cs-nav-link__dot--left" aria-hidden="true" />
+        <span className="cs-nav-link__bracket">[</span>
+        <span className="cs-nav-link__label">return to site</span>
+        <span className="cs-nav-link__bracket">]</span>
+        <span className="cs-nav-link__dot cs-nav-link__dot--right" aria-hidden="true" />
       </a>
       </div>
       <ol>
