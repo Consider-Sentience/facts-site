@@ -249,11 +249,6 @@ export default function App() {
           <p className="eyebrow">Consider Sentience</p>
           <h1>FACTS</h1>
           <p className="lede">A framework for including non-human animals in how AI systems are designed, and a pilot test of how today's models handle it. It's for people who build, review, or fund AI systems.</p>
-          <div className="chips">
-            <Badge tone="next">Five questions</Badge>
-            <Badge tone="then">Two worked profiles</Badge>
-            <Badge tone="done">Pilot test of three AI models</Badge>
-          </div>
         </header>
         <Gap />
         <Missed />
