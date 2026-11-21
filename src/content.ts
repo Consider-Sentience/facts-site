@@ -8,7 +8,7 @@ export const sections = [
 
 export const failures = [
   { name: 'Validation of harm', kind: 'Intentional, direct', text: 'Precision livestock farming (AI sensors and software that monitor animals on farms) is designed around animal subjects but optimized for human interests. The harm is the system itself.' },
-  { name: 'Reproduction of bias', kind: 'Unintentional, direct', text: 'GPT-4 consistently overlooked animal suffering when analyzing the consequences of factory farming.' },
+  { name: 'Reproduction of bias', kind: 'Unintentional, direct', text: 'In a 2023 test, GPT-4 usually did not raise animal welfare as an issue when the animals in the scenario were farmed ones, such as chickens, pigs, and cows.', source: 'https://nautil.us/ais-innate-bias-against-animals-1255389' },
   { name: 'Distortion of reality', kind: 'Unintentional, indirect', text: 'Inaccurate imagery can distort how people perceive some animals, which can undermine conservation efforts.' },
   { name: 'Dual-use risk', kind: 'Intentional, indirect', text: 'Tracking systems built to protect endangered species can help poachers and traders locate their targets.' },
 ];
