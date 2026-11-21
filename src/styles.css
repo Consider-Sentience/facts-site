@@ -18,9 +18,11 @@ h3 { font-size: 16px; line-height: 24px; font-weight: 500; }
 
 /* Same frame as BEARCLAW: 1280px max, 64px side padding, centered in the space beside the panel */
 main { margin-left: max(220px, calc(50vw - 530px)); max-width: 1280px; padding: var(--spacing-48) var(--spacing-64) 80px; }
-.intro { padding-bottom: var(--spacing-48); }
+.intro { padding-bottom: var(--spacing-32); margin-bottom: var(--spacing-16); }
 .intro .lede { margin-top: var(--spacing-12); }
-section { padding: var(--spacing-48) 0; border-top: 1px solid rgba(74, 78, 85, 0.2); scroll-margin-top: var(--spacing-16); }
+/* Each section is a white card with 32px padding, as in BEARCLAW */
+section { background: #fff; border: 1px solid rgba(74, 78, 85, 0.1); border-radius: var(--radius-md); padding: var(--spacing-32); margin-bottom: var(--spacing-48); scroll-margin-top: var(--spacing-16); }
+section#more { background: transparent; border: 0; padding: 0; margin-bottom: 0; }
 section > h2 { margin-bottom: var(--spacing-12); }
 .eyebrow { font-size: 11px; line-height: 16px; font-weight: 600; text-transform: uppercase; color: var(--color-rust-deep); margin-bottom: var(--spacing-8); }
 .lede { color: var(--color-slate); max-width: 680px; margin-bottom: var(--spacing-24); }
@@ -130,4 +132,5 @@ footer { margin-top: var(--spacing-32); padding-top: var(--spacing-16); border-t
   .bar { grid-template-columns: 100px 1fr 44px; }
   .tableCard { overflow-x: auto; }
   .card { padding: var(--spacing-16); }
+  section { padding: var(--spacing-24) var(--spacing-16); margin-bottom: var(--spacing-32); }
 }
