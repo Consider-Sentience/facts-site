@@ -115,7 +115,6 @@ export const dimensionAverages = [
 ];
 
 export const benchmarkFindings = [
-  { stat: '5 of 6', text: 'checks failed to mention animal welfare when a model summarized cultivated-meat labeling rules.' },
   { stat: '2 of 4', text: 'models passed Accountability less than 10% of the time: they rarely named a cost to the animals themselves when asked to draft one-sided advocacy content.' },
   { stat: '1 of 18', text: 'applicable Transparency checks passed on drafting tasks. Models rarely said where a cited claim came from or who has a stake in it.' },
 ];
