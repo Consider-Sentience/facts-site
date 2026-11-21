@@ -8,7 +8,7 @@ h2 { font-size: 22px; line-height: 30px; font-weight: 600; }
 h3 { font-size: 16px; line-height: 24px; font-weight: 500; }
 
 /* Side panel navigation (BEARCLAW nav pattern, turned vertical) */
-.spine { position: fixed; left: 0; top: 0; bottom: 0; width: 220px; padding: var(--spacing-32) var(--spacing-24); background: var(--color-cloud); border-right: 1px solid rgba(74, 78, 85, 0.1); display: flex; flex-direction: column; gap: var(--spacing-32); z-index: 5; }
+.spine { position: fixed; left: 0; top: 0; bottom: 0; width: 232px; padding: var(--spacing-32) var(--spacing-16); background: var(--color-cloud); border-right: 1px solid rgba(74, 78, 85, 0.1); display: flex; flex-direction: column; gap: var(--spacing-32); z-index: 5; }
 .spine-head { display: flex; flex-direction: column; gap: var(--spacing-8); }
 .spine .returnLink { position: relative; display: inline-flex; align-self: flex-start; align-items: center; gap: 5px; margin-left: 12px; padding: 0; border-left: 0; line-height: 21px; color: var(--color-slate); transition: none; }
 .returnLink .rl-br { font-family: 'Nunito', sans-serif; font-weight: 200; font-size: 20px; line-height: 1; }
@@ -17,12 +17,12 @@ h3 { font-size: 16px; line-height: 24px; font-weight: 500; }
 .returnLink .rl-dot-l { width: 4px; height: 4px; left: -10px; }
 .returnLink .rl-dot-r { width: 6px; height: 6px; right: -11px; }
 .returnLink:hover .rl-dot { opacity: 1; }
-.returnLink:hover .rl-br { font-weight: 300; color: rgba(201, 124, 46, 0.7); }
+.returnLink:hover .rl-br { font-weight: 300; }
 .returnLink:hover .rl-txt { font-family: 'Source Serif 4', serif; font-style: italic; font-weight: 500; }
 .fromCS { text-decoration: none; transition: opacity .15s; width: fit-content; }
 .fromCS:hover { opacity: .8; }
 .spine .spine-brand { display: block; padding: 0; border-left: 0; }
-.spine-brand img { display: block; width: 100%; height: auto; }
+.spine-brand img { display: block; width: 199px; height: 32px; object-fit: cover; }
 .spine ol { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: var(--spacing-4); }
 .spine a { display: flex; align-items: center; gap: var(--spacing-10); padding: var(--spacing-6) 0 var(--spacing-6) var(--spacing-12); border-left: 2px solid transparent; font-size: 14px; line-height: 20px; color: var(--color-slate); text-decoration: none; transition: color .15s; }
 .spine a:hover { color: var(--color-ink); }
@@ -31,7 +31,7 @@ h3 { font-size: 16px; line-height: 24px; font-weight: 500; }
 
 /* Side space matches BEARCLAW: its content frame is 1152px wide and centered, so each side gets (100vw - 1152px) / 2, never less than 64px. FACTS keeps that same space on the right, and the same space again to the right of the 220px side panel. */
 :root { --m: max(64px, calc((100vw - 1152px) / 2)); }
-main { margin-left: calc(220px + var(--m)); margin-right: var(--m); padding: var(--spacing-48) 0 80px; }
+main { margin-left: calc(232px + var(--m)); margin-right: var(--m); padding: var(--spacing-48) 0 80px; }
 .intro { padding-bottom: var(--spacing-32); margin-bottom: var(--spacing-16); }
 .intro .lede { margin-top: var(--spacing-12); }
 section { margin-bottom: var(--spacing-64); scroll-margin-top: var(--spacing-16); }
