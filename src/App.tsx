@@ -27,7 +27,16 @@ function useScrollSpy(ids: readonly string[]) {
 function Spine({ active }: { active: string }) {
   return (
     <nav className="spine" aria-label="Sections">
+      <div className="spine-head">
       <a className="spine-brand" href={links.home} aria-label="Consider Sentience"><img src="/consider-sentience-logo.png" alt="Consider Sentience" /></a>
+      <a className="returnLink" href={links.home}>
+        <span className="rl-dot rl-dot-l" aria-hidden="true" />
+        <span className="rl-br">[</span>
+        <span className="rl-txt">return to site</span>
+        <span className="rl-br">]</span>
+        <span className="rl-dot rl-dot-r" aria-hidden="true" />
+      </a>
+      </div>
       <ol>
         {sections.map((s, i) => (
           <li key={s.id}>
@@ -247,6 +256,12 @@ export default function App() {
       <main>
         <header className="intro">
           <h1>FACTS</h1>
+          <a className="fromCS" href={links.home}>
+            <span className="fc-br">[</span>
+            <span className="fc-label">a project from</span>
+            <img src="/consider-sentience-wordmark.png" alt="Consider Sentience" />
+            <span className="fc-br">]</span>
+          </a>
           <p className="lede">A framework for including non-human animals in how AI systems are designed, and a pilot test of how today's models handle it. It's for people who build, review, or fund AI systems.</p>
         </header>
         <Gap />
