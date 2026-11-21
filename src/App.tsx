@@ -210,7 +210,7 @@ function Evidence() {
           </div>
         ))}
       </div>
-      <p className="note">Simple average across the four models. Green is 80% or more, orange 40 to 79%, red below 40%.</p>
+      <p className="note">Each count is a pass out of the AI judge scores. A response is scored by one or two judges, and Transparency only applies when a response cites a claim, so the totals differ. Bar color: green is 80% or more, orange 40 to 79%, red below 40%.</p>
       <p className="tag findingsTag">What stood out</p>
       <div className="findings">
         {benchmarkFindings.map((f) => (
