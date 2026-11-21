@@ -201,12 +201,12 @@ function More() {
   return (
     <section id="more">
       <Eyebrow n="06">Go deeper</Eyebrow>
-      <h2>See FACTS in use, and read the full write-ups</h2>
+      <h2>Read more, or see FACTS in use</h2>
       <div className="cta">
-        <span className="ctaText">BEARCLAW is a benchmark built on FACTS. The write-ups cover the framework and the test in full:</span>
-        <a href={links.bearclaw} target="_blank" rel="noreferrer">BEARCLAW ↗</a>
+        <span className="ctaText">Read how FACTS was built and tested, or see it used in a benchmark:</span>
         <a href={links.framework} target="_blank" rel="noreferrer">From FATE to FACTS ↗</a>
         <a href={links.testing} target="_blank" rel="noreferrer">Testing FACTS ↗</a>
+        <a href={links.bearclaw} target="_blank" rel="noreferrer">BEARCLAW benchmark ↗</a>
       </div>
     </section>
   );
