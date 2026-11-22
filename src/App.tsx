@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { sections, failures, domains, profiles, stages, facts, benchmarkModels, dimensionAverages, benchmarkFindings, links } from './content';
 
 function useScrollSpy(ids: readonly string[]) {
@@ -25,23 +25,28 @@ function useScrollSpy(ids: readonly string[]) {
 }
 
 function Spine({ active }: { active: string }) {
+  const [open, setOpen] = useState(false);
   return (
-    <nav className="spine" aria-label="Sections">
-      <div className="spine-head">
-      <a className="spine-brand" href={links.home} aria-label="Consider Sentience"><img src="/consider-sentience-wordmark.png" alt="Consider Sentience" /></a>
-      <a className="cs-nav-link" href={links.home}>
-        <span className="cs-nav-link__dot cs-nav-link__dot--left" aria-hidden="true" />
-        <span className="cs-nav-link__bracket">[</span>
-        <span className="cs-nav-link__label">return to site</span>
-        <span className="cs-nav-link__bracket">]</span>
-        <span className="cs-nav-link__dot cs-nav-link__dot--right" aria-hidden="true" />
-      </a>
+    <nav className={`spine${open ? ' open' : ''}`} aria-label="Sections">
+      <div className="spine-top">
+        <div className="spine-head">
+          <a className="spine-brand" href={links.home} aria-label="Consider Sentience"><img src="/consider-sentience-wordmark.png" alt="Consider Sentience" /></a>
+          <a className="cs-nav-link" href={links.home}>
+            <span className="cs-nav-link__dot cs-nav-link__dot--left" aria-hidden="true" />
+            <span className="cs-nav-link__bracket">[</span>
+            <span className="cs-nav-link__label">return to site</span>
+            <span className="cs-nav-link__bracket">]</span>
+            <span className="cs-nav-link__dot cs-nav-link__dot--right" aria-hidden="true" />
+          </a>
+        </div>
+        <button type="button" className="spine-toggle" aria-label="Toggle navigation menu" aria-expanded={open} onClick={() => setOpen((v) => !v)}>
+          <span /><span /><span />
+        </button>
       </div>
       <ol>
         {sections.map((s, i) => (
           <li key={s.id}>
-            <a href={`#${s.id}`} className={active === s.id ? 'active' : ''} aria-current={active === s.id ? 'true' : undefined}>
-              <span className="dot" aria-hidden="true" />
+            <a href={`#${s.id}`} onClick={() => setOpen(false)} className={active === s.id ? 'active' : ''} aria-current={active === s.id ? 'true' : undefined}>
               <span className="num">{String(i + 1).padStart(2, '0')}</span>
               {s.label}
             </a>
@@ -149,6 +154,16 @@ function Cell({ text, bold }: { text: string; bold: boolean }) {
 
 function ShowsUp() {
   const [n, setN] = useState(1);
+  const mapRef = useRef<HTMLDivElement>(null);
+  const first = useRef(true);
+  // When the stage changes, scroll the map sideways so the newest column is in view
+  useEffect(() => {
+    if (first.current) { first.current = false; return; }
+    const el = mapRef.current;
+    if (!el) return;
+    const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    requestAnimationFrame(() => el.scrollTo({ left: el.scrollWidth - el.clientWidth, behavior: reduce ? 'auto' : 'smooth' }));
+  }, [n]);
   return (
     <section id="shows-up">
       <Eyebrow n="03">Where it shows up</Eyebrow>
@@ -161,7 +176,7 @@ function ShowsUp() {
           </button>
         ))}
       </div>
-      <div className="mapScroll">
+      <div className="mapScroll" ref={mapRef}>
         <div className="impact" style={{ ['--cols' as string]: n }}>
           <div className="ic corner" />
           {stages.slice(0, n).map((s) => <div className="ic head" key={s.name}>{s.name}</div>)}
