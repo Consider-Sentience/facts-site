@@ -132,7 +132,7 @@ section > h2 { margin-bottom: var(--spacing-12); }
 .cta a { color: var(--color-rust); font-size: 15px; font-weight: 500; text-decoration: none; transition: color .15s; }
 .cta a:hover { color: var(--color-rust-deep); }
 .ext { width: 1.15em; height: 1.15em; margin-left: 6px; vertical-align: middle; }
-footer { margin-top: var(--spacing-32); padding-top: var(--spacing-16); border-top: 1px solid rgba(74, 78, 85, 0.2); font-size: 12px; color: var(--color-slate); }
+footer { margin-left: calc(232px + var(--m)); margin-right: var(--m); padding: var(--spacing-48) 0; text-align: center; font-size: 12px; line-height: 16px; color: var(--color-slate); }
 
 @media (max-width: 860px) {
   .spine { position: sticky; width: auto; flex-direction: row; align-items: center; padding: var(--spacing-8) var(--spacing-16); overflow-x: auto; gap: var(--spacing-16); border-right: 0; border-bottom: 1px solid rgba(74, 78, 85, 0.1); }
@@ -144,6 +144,7 @@ footer { margin-top: var(--spacing-32); padding-top: var(--spacing-16); border-t
   .spine ol a.active { border-bottom-color: var(--color-rust); }
   .spine .num { display: none; }
   main { margin: 0; padding: var(--spacing-32) var(--spacing-16) var(--spacing-64); }
+  footer { margin: 0; padding: var(--spacing-48) var(--spacing-16); }
   h1 { font-size: 40px; line-height: 48px; }
   .grid2, .factsRow { grid-template-columns: 1fr; }
   .domains div { grid-template-columns: 1fr; gap: 0; }
