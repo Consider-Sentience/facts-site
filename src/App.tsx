@@ -84,7 +84,10 @@ function Gap() {
         {failures.map((f, i) => (
           <div className={`card accent-${i}`} key={f.name}>
             <h3>{f.name}</h3>
-            <Badge tone={f.kind.endsWith(', direct') ? 'next' : 'tide'}>{f.kind}</Badge>
+            <div className="badges">
+              <Badge tone={f.kind.startsWith('Intentional') ? 'next' : 'then'}>{f.kind.startsWith('Intentional') ? 'Intentional' : 'Unintentional'}</Badge>
+              <Badge tone={f.kind.endsWith(', direct') ? 'done' : 'tide'}>{f.kind.endsWith(', direct') ? 'Direct' : 'Indirect'}</Badge>
+            </div>
             <p>{f.text}</p>
             {f.source && <a className="inlineLink" href={f.source} target="_blank" rel="noreferrer">Source<ExtArrow /></a>}
           </div>
