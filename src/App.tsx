@@ -279,8 +279,8 @@ export default function App() {
         <Facts />
         <Evidence />
         <Cta />
-        <footer>© Consider Sentience · <a href={links.home}>considersentience.ai</a></footer>
       </main>
+      <footer>© 2026 Consider Sentience.</footer>
     </>
   );
 }
