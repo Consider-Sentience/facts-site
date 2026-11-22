@@ -78,9 +78,9 @@ section > h2 { margin-bottom: var(--spacing-12); }
 
 /* Welfare impact map: one column per stage, added as the toggle moves forward (as in the paper's table) */
 .mapScroll { overflow-x: auto; }
-.impact { --label: 140px; display: grid; grid-template-columns: var(--label) repeat(var(--cols), minmax(0, 1fr)); width: calc(var(--label) + var(--cols) * ((100% - var(--label)) / 5)); min-width: calc(var(--label) + var(--cols) * 150px); border: 1px solid rgba(74, 78, 85, 0.18); border-radius: var(--radius-md); overflow: hidden; background: var(--color-white); }
+.impact { --label: 140px; display: grid; grid-template-columns: var(--label) repeat(var(--cols), minmax(0, 1fr)); width: calc(var(--label) + var(--cols) * ((100% - var(--label)) / 5)); min-width: calc(var(--label) + var(--cols) * 150px); gap: 1px; border: 1px solid rgba(74, 78, 85, 0.12); border-radius: var(--radius-md); overflow: hidden; background: rgba(74, 78, 85, 0.12); }
 .irow { display: contents; }
-.ic { padding: var(--spacing-12); border-right: 1px solid rgba(74, 78, 85, 0.12); border-bottom: 1px solid rgba(74, 78, 85, 0.12); font-size: 13px; line-height: 20px; }
+.ic { padding: var(--spacing-12); background: var(--color-white); font-size: 13px; line-height: 20px; }
 .ic.head { font-size: 11px; line-height: 16px; font-weight: 600; text-transform: uppercase; color: var(--color-slate); background: var(--color-white); animation: fadeIn .25s ease; display: flex; align-items: center; }
 .ic.corner { background: var(--color-white); }
 .ic.rowhead { font-size: 11px; line-height: 16px; font-weight: 600; text-transform: uppercase; color: var(--color-slate); }
