@@ -74,7 +74,7 @@ section > h2 { margin-bottom: var(--spacing-12); }
 .outcome b { display: block; font-weight: 600; margin-bottom: 2px; }
 .outcome.good b { color: var(--color-status-pass); }
 .outcome.bad b { color: var(--color-status-fail); }
-.proxy { margin: var(--spacing-24) 0 0; padding: var(--spacing-12) var(--spacing-16); background: var(--color-cloud); border-left: 3px solid rgba(74, 78, 85, 0.25); }
+.proxy { margin: var(--spacing-24) 0 0; padding: var(--spacing-12) var(--spacing-16); background: var(--color-cloud); border-left: 3px solid rgba(74, 78, 85, 0.25); border-radius: var(--radius-md); }
 
 /* Welfare impact map: one column per stage, added as the toggle moves forward (as in the paper's table) */
 .mapScroll { overflow-x: auto; }
