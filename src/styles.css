@@ -34,7 +34,6 @@ section > h2 { margin-bottom: var(--spacing-12); }
 .tag { font-size: 11px; line-height: 16px; font-weight: 600; text-transform: uppercase; color: var(--color-slate); margin-bottom: var(--spacing-4); }
 
 /* Badges: same three styles as BEARCLAW's Next Steps badges (done / next / then) */
-.chips { display: flex; flex-wrap: wrap; gap: var(--spacing-12); }
 .badge { display: inline-flex; align-items: center; gap: 6px; align-self: flex-start; border-radius: var(--radius-pill); padding: 4px 10px; font-size: 11px; line-height: 16px; font-weight: 600; text-transform: uppercase; flex: none; }
 .badge .bdot { width: 6px; height: 6px; border-radius: 50%; background: currentColor; opacity: .7; }
 .badge.done { background: var(--color-sage-tint); color: var(--color-status-pass); }
@@ -48,7 +47,6 @@ section > h2 { margin-bottom: var(--spacing-12); }
 .card::before { content: ''; position: absolute; left: var(--bar-inset); top: var(--bar-inset); bottom: var(--bar-inset); width: 3px; border-radius: 9999px; background: var(--bar-color); }
 .card > p:not(.tag) { margin: 0; }
 .grid2 { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--spacing-16); align-items: stretch; }
-.stack { display: grid; gap: var(--spacing-16); }
 .accent-0 { --bar-color: var(--color-rust); }
 .accent-1 { --bar-color: var(--color-tide); }
 .accent-2 { --bar-color: var(--color-status-pass); }
