@@ -40,17 +40,20 @@ section > h2 { margin-bottom: var(--spacing-12); }
 .badge.done { background: var(--color-sage-tint); color: var(--color-status-pass); }
 .badge.next { background: var(--color-next-tint); color: var(--color-rust); }
 .badge.then { background: var(--color-then-tint); color: var(--color-slate); }
+.badge.tide { background: var(--color-tide-tint); color: var(--color-tide); }
 
 /* Cards (BEARCLAW: white, 1px border, 8px radius). Equal height inside every grid. */
-.card { background: var(--color-white); border: 1px solid rgba(74, 78, 85, 0.12); border-radius: var(--radius-md); padding: var(--spacing-24); display: flex; flex-direction: column; gap: var(--spacing-8); }
+.card { --bar-inset: var(--spacing-24); --bar-color: var(--color-rust); position: relative; background: var(--color-white); border: 1px solid rgba(74, 78, 85, 0.12); border-radius: var(--radius-md); padding: var(--bar-inset) var(--bar-inset) var(--bar-inset) calc(var(--bar-inset) + 3px + var(--spacing-16)); display: flex; flex-direction: column; gap: var(--spacing-8); }
+/* Vertical color bar (same marker as BEARCLAW's quote blocks): 3px, rounded, 16px to the text */
+.card::before { content: ''; position: absolute; left: var(--bar-inset); top: var(--bar-inset); bottom: var(--bar-inset); width: 3px; border-radius: 9999px; background: var(--bar-color); }
 .card > p:not(.tag) { margin: 0; }
 .grid2 { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--spacing-16); align-items: stretch; }
 .stack { display: grid; gap: var(--spacing-16); }
-.accent-0 { border-top: 3px solid var(--color-rust); }
-.accent-1 { border-top: 3px solid var(--color-tide); }
-.accent-2 { border-top: 3px solid var(--color-status-pass); }
-.accent-3 { border-top: 3px solid var(--color-rust-deep); }
-.accent-4 { border-top: 3px solid var(--color-ink); }
+.accent-0 { --bar-color: var(--color-rust); }
+.accent-1 { --bar-color: var(--color-tide); }
+.accent-2 { --bar-color: var(--color-status-pass); }
+.accent-3 { --bar-color: var(--color-rust-deep); }
+.accent-4 { --bar-color: var(--color-ink); }
 
 /* Toggle group (BEARCLAW: pill outline, active fills ink) */
 .toggle { display: inline-flex; max-width: 100%; overflow-x: auto; border: 1px solid rgba(27, 36, 48, 0.55); border-radius: var(--radius-pill); padding: 6px; margin-bottom: var(--spacing-16); }
@@ -97,7 +100,7 @@ section > h2 { margin-bottom: var(--spacing-12); }
 @keyframes fadeIn { from { opacity: 0; transform: translateY(4px); } to { opacity: 1; transform: none; } }
 
 .factsRow { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: var(--spacing-16); align-items: stretch; }
-.tile { padding: var(--spacing-16); position: relative; }
+.tile { --bar-inset: var(--spacing-16); }
 .tile .letter { display: block; font-size: 40px; line-height: 48px; font-weight: 600; color: var(--color-rust); }
 .tile.accent-1 .letter { color: var(--color-tide); }
 .tile.accent-2 .letter { color: var(--color-status-pass); }
@@ -158,6 +161,6 @@ footer { margin-left: calc(232px + var(--m)); margin-right: var(--m); padding: v
   .pHead, .pBody { padding: var(--spacing-16); }
   .bar { grid-template-columns: 96px 1fr 48px; gap: var(--spacing-8); }
   .finding { grid-template-columns: 1fr; gap: 0; }
-  .card { padding: var(--spacing-16); }
+  .card { --bar-inset: var(--spacing-16); }
   section { margin-bottom: var(--spacing-48); scroll-margin-top: 112px; }
 }

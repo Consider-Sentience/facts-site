@@ -57,7 +57,7 @@ function Spine({ active }: { active: string }) {
   );
 }
 
-type Tone = 'done' | 'next' | 'then';
+type Tone = 'done' | 'next' | 'then' | 'tide';
 function Badge({ tone, children }: { tone: Tone; children: string }) {
   return <span className={`badge ${tone}`}><span className="bdot" />{children}</span>;
 }
@@ -84,7 +84,7 @@ function Gap() {
         {failures.map((f, i) => (
           <div className={`card accent-${i}`} key={f.name}>
             <h3>{f.name}</h3>
-            <Badge tone={f.kind.startsWith('Intentional') ? 'next' : 'then'}>{f.kind}</Badge>
+            <Badge tone={f.kind.endsWith(', direct') ? 'next' : 'tide'}>{f.kind}</Badge>
             <p>{f.text}</p>
             {f.source && <a className="inlineLink" href={f.source} target="_blank" rel="noreferrer">Source<ExtArrow /></a>}
           </div>
